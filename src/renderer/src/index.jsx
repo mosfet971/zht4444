@@ -1,28 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled from 'styled-components';
+import { observer } from "mobx-react-lite";
+import { storesReg } from "./stores";
+import ButtonTest from "./components/test/ButtonTest.jsx";
+import InputTest from "./components/test/InputTest.jsx";
+import TextTest from "./components/test/TextTest.jsx";
 
-const Redtext = styled.h1`
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-  color: black;
+storesReg();
 
-  &:hover {
-    display: none;
-  }
-`;
+let App = observer(() => {
+  return (<>
+    <ButtonTest/>
+    <InputTest/>
+    <TextTest/>
+  </>);
+});
 
-
-class Hello extends React.Component {
-    render() {
-        return <>
-        <Redtext>Hello, React</Redtext>
-        <button onClick={async ()=>alert(await ipcRenderer.invoke("uga"))}>уга</button>
-        </>;
-    }
-}
 ReactDOM.render(
-    <Hello/>,
-    document.getElementById("reactRoot")
+  <App/>,
+  document.getElementById("reactRoot")
 )

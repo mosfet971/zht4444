@@ -42,9 +42,8 @@ function createWindow() {
     app.quit();
   });
 
-  ipcMain.handle("uga", async()=> {
-    await dialog.showMessageBox(mainWindow, {message:"uga", title: "uga", type: "info"});
-    return "-------";
+  ipcMain.handle("processValue", async(e, v)=> {
+    return parseInt(v)+1000;
   });
 
 };
