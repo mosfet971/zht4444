@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
+const db = require("./tools/database");
 
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -42,8 +43,26 @@ function createWindow() {
     app.quit();
   });
 
+
+  let mk;
+  let dbPath = __dirname + "../../../";
+
   ipcMain.handle("processValue", async(e, v)=> {
     return parseInt(v)+1000;
+  });
+
+  ipcMain.handle("login", async(e, password)=> {
+    try {
+      if(await db.checkExist(dbPath)) {
+        mk = await db.getMasterKey(dbPath, password);
+      } else {
+        await db.create(dbPath, password);
+        mk = await db.getMasterKey(dbPath, password);
+      }
+      return true;
+    } catch (error) {
+      return false;
+    }
   });
 
 };
