@@ -4,16 +4,16 @@ import MainPage from "./pages/MainPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ModalWindowWrapper from "./modalWindows/ModalWindowWrapper.jsx";
 
+import styled from "styled-components";
+
+let Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #ececec;
+`;
+
 let App = observer(() => {
-    /*
-    useEffect(() => {
-        if (window.stores.loginStore.isNotValid) {
-            window.stores.modalWindowStore.open("LOGIN_ERROR");
-        } else {
-            window.stores.modalWindowStore.close();
-        }
-    }, [window.stores.loginStore.isNotValid]);
-    */
     let jsx = [];
     
     if (window.stores.loginStore.isLogined) {
@@ -26,7 +26,7 @@ let App = observer(() => {
         jsx.push(<ModalWindowWrapper/>);
     }
 
-    return jsx;
+    return <Background>{jsx}</Background>;
   });
 
 export default App;

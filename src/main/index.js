@@ -14,8 +14,8 @@ function createWindow() {
     icon: __dirname + '/media/logo.ico',
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-      color: '#363636',
-      symbolColor: '#FF8D39',
+      color: '#ececec',
+      symbolColor: '#000000',
       height: 25
     },
     autoHideMenuBar: true,

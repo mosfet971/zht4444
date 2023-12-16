@@ -5,17 +5,17 @@ let ModalWindow = (props) => {
     return (
         <Draggable handle=".draggableHandle" positionOffset={{ x: '-50%', y: '-50%' }}>
             <div
-                className="window active is-bright"
-                style={{ visibility: "visible", opacity: "unset", userSelect: "none" }}
+                className="window active is-bright glass"
+                style={{ visibility: "visible", opacity: "unset", userSelect: "none", zoom: "1.01" }}
                 role="dialog"
                 aria-labelledby="dialog-title"
             >
                 <div className="title-bar draggableHandle">
-                    <div className="title-bar-text" id="dialog-title">
+                    <div className="title-bar-text" id="dialog-title" style={{color: "black"}}>
                         {props.title}
                     </div>
                     <div className="title-bar-controls">
-                        <button aria-label="Close" onClick={props.onClose} />
+                        <button aria-label="Close" onClick={props.onClose}  />
                     </div>
                 </div>
 
