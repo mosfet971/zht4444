@@ -3,22 +3,25 @@ import { observer } from "mobx-react-lite";
 import styled from "styled-components";
 
 let LoginForm = styled.div`
-  width: 40vw;
+  width: 35vw;
   position: fixed;
   top: calc(50vh - 20vh);
-  left: calc(50vw - 20vw);
+  left: calc(50vw - 17.5vw);
   display: block;
   background-color: #cacaca;
   padding: 2em;
   box-shadow: 0.25em 0.25em 0.5em 0 rgba(34, 60, 80, 0.2);
 
+
   &>div>h2 {
-    margin-bottom: 0.5em;
+    margin: 0;
+    user-select: none;
   }
 
   &>div>p {
     margin-bottom: 0.5em;
     font-size: medium;
+    user-select: none;
   }
 
   &>div {
@@ -54,6 +57,7 @@ let LoginForm = styled.div`
     height: 2em;
     align-self: center;
     width: 100%;
+    margin-bottom: 2em;
   }
 
 `;
@@ -75,6 +79,7 @@ let LoginPage = observer(() => {
         type="password"
         onInput={(e) => window.stores.loginStore.updatePassword(e.target.value)}
         placeholder="Пароль"
+        onKeyDown={(e)=>{e.key == "Enter" ? window.stores.loginStore.login() : false}}
       />
       <button onClick={() => window.stores.loginStore.login()}>Ввод</button>
     </div>
