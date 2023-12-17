@@ -5,7 +5,7 @@ import ModalWindowWithFooter from "../../universal/ModalWindowWithFooter.jsx"
 let WindowLoginError = observer(() => {
   return (
     <ModalWindowWithFooter title="Ошибка" onClose={()=>window.stores.modalWindowStore.close() }>
-      <p style={{width: "20em", fontSize: "large"}}>Введен неверный пароль</p>
+      <p style={{width: "20em", fontSize: "large"}}>Введён неверный пароль</p>
     </ModalWindowWithFooter>
     );
 });

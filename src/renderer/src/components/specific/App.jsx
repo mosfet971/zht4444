@@ -13,9 +13,20 @@ let Background = styled.div`
   background-color: #ececec;
 `;
 
+let WindowDragArea = styled.div`
+  width: 100vw;
+  position: fixed;
+  height: 1.5em;
+  top: 0;
+  -webkit-app-region: drag;
+  z-index: 1;
+`;
+
 let App = observer(() => {
     let jsx = [];
     
+    jsx.push(<WindowDragArea></WindowDragArea>);
+
     if (window.stores.loginStore.isLogined) {
         jsx.push(<MainPage/>);
     } else {
