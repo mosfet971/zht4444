@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-
 let MenuCardDiv = styled.div`
     background-color: #e9e9e9;
-    width: 5em;
-    height: 5em;
+    width: 7em;
+    height: 4em;
     text-align: center;
     padding: 1em;
     box-shadow: 0.25em 0.25em 0.5em 0 rgba(34, 60, 80, 0.2);
@@ -28,7 +27,7 @@ let MenuCardDiv = styled.div`
 let MenuCard = (props) => {
     return (
         <MenuCardDiv onClick={props.handler}>
-            {props.text}
+            {props.children}
         </MenuCardDiv>
     );
 };
