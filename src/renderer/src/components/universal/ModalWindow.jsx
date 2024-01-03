@@ -6,7 +6,7 @@ let ModalWindow = (props) => {
         <Draggable handle=".draggableHandle" positionOffset={{ x: '-50%', y: '-50%' }}>
             <div
                 className="window active is-bright glass"
-                style={{ visibility: "visible", opacity: "unset", userSelect: "none", zoom: "1.01" }}
+                style={{ visibility: "visible", opacity: "unset", userSelect: "none", zoom: "1.0" }}
                 role="dialog"
                 aria-labelledby="dialog-title"
             >

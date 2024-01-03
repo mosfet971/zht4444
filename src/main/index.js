@@ -45,12 +45,16 @@ function createWindow() {
 
 
   let mk;
-  let dbPath = __dirname + "../../../";
+  let dbPath;
+  let noteEntityType;
 
-  ipcMain.handle("processValue", async(e, v)=> {
-    return parseInt(v)+1000;
-  });
-
+  (async ()=>{
+    mk;
+    dbPath = __dirname + "../../../";
+    
+    noteEntityType = await db.generateEntityTypeObject("note", (v)=>{return true;});
+  })();
+  
   ipcMain.handle("login", async(e, password)=> {
     try {
       if(await db.checkExist(dbPath)) {
@@ -63,6 +67,33 @@ function createWindow() {
     } catch (error) {
       return false;
     }
+  });
+
+  ipcMain.handle("delNote", async(e, id)=> {
+    await db.rmEntity(dbPath, mk, noteEntityType, id);
+  });
+
+  ipcMain.handle("createNewNoteAndGetId", async(e)=> {
+    let id = await db.newId();
+
+    let note = {
+      blockList: ["text"],
+      text: ""
+    };
+
+    await db.setEntity(dbPath, mk, noteEntityType, id, note);
+    return id;
+  });
+
+  ipcMain.handle("isNoteExist", async(e, noteId)=> {
+    let noteIds = await db.getEntitiesIdsByType(dbPath, mk, noteEntityType);
+
+    let isExist = false;
+    for (let i of noteIds) {
+      if (noteId == i) isExist = true;
+    }
+
+    return isExist;
   });
 
 };

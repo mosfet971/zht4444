@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import MenuTab from "../tabs/MenuTab.jsx";
+import NoteTab from "../tabs/NoteTab.jsx";
 
 let Tabpanel = styled.article`
   width: 100vw;
@@ -40,7 +41,7 @@ let MainPage = observer(() => {
       <Tabpanel role="tabpanel" className="has-scrollbar" id="graph" hidden>Tab C1 is active</Tabpanel>
       <Tabpanel role="tabpanel" className="has-scrollbar" id="recent" hidden>Tab C2 is active</Tabpanel>
       <Tabpanel role="tabpanel" className="has-scrollbar" id="search" hidden>Tab C3 is active</Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar"id="readAndWrite" hidden>Tab D is inactive</Tabpanel>
+      <Tabpanel role="tabpanel" className="has-scrollbar" id="readAndWrite" hidden><NoteTab/></Tabpanel>
     </section>
   </>);
 });

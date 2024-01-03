@@ -6,3 +6,11 @@ body {
 * {
     font-family: 'Times New Roman', Times, serif;
 }
+
+button {
+    user-select: none;
+}
+
+input {
+    user-select: unset !important;
+}

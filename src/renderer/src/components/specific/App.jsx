@@ -23,21 +23,21 @@ let WindowDragArea = styled.div`
 `;
 
 let App = observer(() => {
-    let jsx = [];
+    let markup = [];
     
-    jsx.push(<WindowDragArea></WindowDragArea>);
+    markup.push(<WindowDragArea></WindowDragArea>);
 
     if (window.stores.loginStore.isLogined) {
-        jsx.push(<MainPage/>);
+      markup.push(<MainPage/>);
     } else {
-        jsx.push(<LoginPage/>);
+      markup.push(<LoginPage/>);
     }
 
     if (window.stores.modalWindowStore.isOpened) {
-        jsx.push(<ModalWindowWrapper/>);
+      markup.push(<ModalWindowWrapper/>);
     }
 
-    return <Background>{jsx}</Background>;
+    return <Background>{markup}</Background>;
   });
 
 export default App;

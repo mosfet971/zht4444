@@ -38,7 +38,7 @@ exports.getMasterKey = async (databaseDirPath, password) => {
 }
 
 exports.generateEntityTypeObject = async (name, validator) => {
-    return({name, validator});
+    return({name: name, validator: validator});
 }
 
 exports.setEntity = async (databaseDirPath, mk, entityType, entityId, entityObj) => {
@@ -71,7 +71,6 @@ exports.setEntity = async (databaseDirPath, mk, entityType, entityId, entityObj)
     let cryptedEntityJson = JSON.stringify(cryptog.aes256.encrypt(JSON.stringify(entityObj), cryptog.toByte(mk)));
 
     await easyFs.writeFile(entityFilePath, cryptedEntityJson);
-
 }
 
 exports.getEntitiesIdsByType = async (databaseDirPath, mk, entityType) => {
@@ -129,11 +128,16 @@ exports.rmEntity = async (databaseDirPath, mk, entityType, entityId) => {
     let idListFilePath = (dbRootPath + entityType.name + ".dbf");
     let idList = JSON.parse(await easyFs.getFileText(idListFilePath));
     let i = 0;
-    for (let j in idList) {
-        if (idList[i] == entityId) { i = j; break;}
+    for (let j of idList) {
+        if (idList[i] == entityId) break;
+        i++;
     }
     idList.splice(i, 1);
-    await easyFs.writeFile(idListFilePath, idList);
+    await easyFs.writeFile(idListFilePath, JSON.stringify(idList));
+
+    if (await easyFs.getFileText(idListFilePath) == "") {
+        await easyFs.writeFile(idListFilePath, '[]');
+    }
 }
 
 exports.setFile = async (databaseDirPath, mk, fileId, inputFilePath) => {
@@ -210,9 +214,14 @@ exports.rmFile = async (databaseDirPath, mk, fileId) => {
     let idivList = JSON.parse(await easyFs.getFileText(idivListFilePath));
     
     let i = 0;
-    for (let j in idivList) {
-        if (idivList[i].id == fileId) { i = j; break;}
+    for (let j of idivList) {
+        if (idivList[i].id == fileId) break;
+        i++;
     }
     idivList.splice(i, 1);
-    await easyFs.writeFile(idivListFilePath, idivList);
+    await easyFs.writeFile(idivListFilePath, JSON.stringify(idivList));
+
+    if (await easyFs.getFileText(idivListFilePath) == "") {
+        await easyFs.writeFile(idivListFilePath, '[]');
+    }
 }

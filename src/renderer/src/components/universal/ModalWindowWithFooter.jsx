@@ -6,7 +6,7 @@ let ModalWindowWithFooter = (props) => {
         <Draggable handle=".draggableHandle" positionOffset={{ x: '-50%', y: '-50%' }}>
             <div
                 className="window active is-bright glass"
-                style={{ visibility: "visible", opacity: "unset", userSelect: "none", zoom: "1.01" }}
+                style={{ visibility: "visible", opacity: "unset", userSelect: "none", zoom: "1.0" }}
                 role="dialog"
                 aria-labelledby="dialog-title"
             >
@@ -19,13 +19,9 @@ let ModalWindowWithFooter = (props) => {
                     </div>
                 </div>
 
-                <div className="window-body has-space" style={{color: "black"}}>
+                <div className="window-body has-space" style={{display: "flex", color: "black"}}>
                     {props.children}
                 </div>
-
-                <footer style={{textAlign: "right"}}>
-                    <button onClick={props.onClose}>OK</button>
-                </footer>
             </div>
         </Draggable>
     );

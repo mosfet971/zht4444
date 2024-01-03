@@ -12,7 +12,8 @@ import {
     IconSettingsSearch,
     IconSettingsCode,
     IconArrowMerge,
-    IconZoomScan
+    IconZoomScan,
+    IconFileSymlink
 } from '@tabler/icons-react';
 
 let MenuCardsContainer = styled.div`
@@ -24,9 +25,15 @@ let MenuCardsContainer = styled.div`
 let MenuTab = observer(() => {
     return (
         <MenuCardsContainer>
-            <MenuCard handler={alert}>
+            <MenuCard handler={window.stores.noteTabStore.createNewNoteAndOpenForWriting}>
                 <IconFilePlus/><br/>
                 Создать новую запись
+            </MenuCard>
+            <MenuCard handler={async ()=>{
+                await window.stores.modalWindowStore.open("OpenNoteById");
+            }}>
+                <IconFileSymlink/><br/>
+                Открыть запись по id
             </MenuCard>
             <MenuCard handler={alert}>
                 <IconHelp/><br/>
@@ -46,7 +53,7 @@ let MenuTab = observer(() => {
             </MenuCard>
             <MenuCard handler={alert}>
                 <IconSettingsCode/><br/>
-                Управление шаблонами записей
+                Управление HTML вставками
             </MenuCard>
             <MenuCard handler={alert}>
                 <IconArrowMerge/><br/>
