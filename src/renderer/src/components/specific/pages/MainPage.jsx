@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import MenuTab from "../tabs/MenuTab.jsx";
 import NoteTab from "../tabs/NoteTab.jsx";
+import { tabStore } from "../../../stores/TabStore.js";
 
 let Tabpanel = styled.article`
   width: 100vw;
@@ -23,7 +24,7 @@ let TabMenu = styled.menu`
 
 let MainPage = observer(() => {
   useEffect(() => {
-    window.stores.tabStore.init();
+    tabStore.init();
   }, []);
 
   return (<>

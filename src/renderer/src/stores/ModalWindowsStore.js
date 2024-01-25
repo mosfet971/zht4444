@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class ModalWindowStore {
+class ModalWindowsStore {
     constructor() {
         makeAutoObservable(this);
     }
@@ -19,4 +19,4 @@ class ModalWindowStore {
     };
 }
 
-export default ModalWindowStore;
+export const modalWindowsStore = new ModalWindowsStore();

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import ModalWindow from "../../universal/ModalWindow.jsx"
 import styled from "styled-components";
+import { windowOpenNoteByIdStore } from "../../../stores/ModalWindowsStores/WindowOpenNoteByIdStore.js";
+import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
 
 let Form = styled.div`
   position: relative;
@@ -24,15 +26,20 @@ let Form = styled.div`
 
 let WindowOpenNoteById = observer(() => {
   useEffect(() => {
-    window.stores.windowOpenNoteByIdStore.reset();
+    windowOpenNoteByIdStore.reset();
   }, []);
   
   return (
-    <ModalWindow title="Открытие записи" onClose={window.stores.modalWindowStore.close}>
+    <ModalWindow title="Открытие записи" onClose={modalWindowsStore.close}>
       <p style={{ width: "20em", fontSize: "large" }}>Введите идентификатор записи:</p>
       <Form>
-        <input type="text" onInput={window.stores.windowOpenNoteByIdStore.idInputOninputHandler} placeholder="идентификатор" />
-        <button onClick={window.stores.windowOpenNoteByIdStore.submit}>Открыть</button>
+        <input 
+          type="text" 
+          onInput={windowOpenNoteByIdStore.idInputOninputHandler} 
+          placeholder="идентификатор"
+          onKeyDown={(e)=>{e.key == "Enter" ? windowOpenNoteByIdStore.submit() : false}}
+        />
+        <button onClick={windowOpenNoteByIdStore.submit}>Открыть</button>
       </Form>
     </ModalWindow>
   );

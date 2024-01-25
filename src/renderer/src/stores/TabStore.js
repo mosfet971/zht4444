@@ -1,5 +1,3 @@
-
-
 import { makeAutoObservable } from "mobx";
 
 class TabStore {
@@ -19,4 +17,4 @@ class TabStore {
     }
 }
 
-export default TabStore;
+export const tabStore = new TabStore();

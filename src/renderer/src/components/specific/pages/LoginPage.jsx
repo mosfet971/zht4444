@@ -1,6 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import styled from "styled-components";
+import { loginStore } from "../../../stores/LoginStore";
 
 let LoginForm = styled.div`
   width: 35vw;
@@ -77,11 +78,11 @@ let LoginPage = observer(() => {
       <div className="line"></div>
       <input
         type="password"
-        onInput={(e) => window.stores.loginStore.updatePassword(e.target.value)}
+        onInput={(e) => loginStore.updatePassword(e.target.value)}
         placeholder="Пароль"
-        onKeyDown={(e)=>{e.key == "Enter" ? window.stores.loginStore.login() : false}}
+        onKeyDown={(e)=>{e.key == "Enter" ? loginStore.login() : false}}
       />
-      <button onClick={() => window.stores.loginStore.login()}>Ввод</button>
+      <button onClick={() => loginStore.login()}>Ввод</button>
     </div>
   </LoginForm>);
 });

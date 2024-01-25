@@ -6,6 +6,9 @@ import ModalWindowWrapper from "./modalWindows/ModalWindowWrapper.jsx";
 
 import styled from "styled-components";
 
+import { modalWindowsStore } from "../../stores/ModalWindowsStore.js";
+import { loginStore } from "../../stores/LoginStore.js"
+
 let Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -27,13 +30,13 @@ let App = observer(() => {
     
     markup.push(<WindowDragArea></WindowDragArea>);
 
-    if (window.stores.loginStore.isLogined) {
+    if (loginStore.isLogined) {
       markup.push(<MainPage/>);
     } else {
       markup.push(<LoginPage/>);
     }
 
-    if (window.stores.modalWindowStore.isOpened) {
+    if (modalWindowsStore.isOpened) {
       markup.push(<ModalWindowWrapper/>);
     }
 

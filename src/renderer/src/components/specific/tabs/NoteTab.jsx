@@ -13,14 +13,18 @@ import {
     IconEditOff
 } from '@tabler/icons-react';
 
+import { noteTabStore } from "../../../stores/NoteTabStore.js";
+
 let ControlsContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 0.3em;
-    width: 100%;
+    width: calc(100% - (0.3em + 0.3em));
     border-bottom: 0.03em solid #b8b8b8;
     padding-top: 1em;
     padding-bottom: 0.7em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
 
     & > div {
         font-size: 135%;
@@ -60,7 +64,7 @@ let ControlButton = styled.div`
 let NoteTab = observer(() => {
     let markup = [];
 
-    switch (window.stores.noteTabStore.mode) {
+    switch (noteTabStore.mode) {
         case "no":
             markup.push(<h2 style={{ margin: "1em" }}>Нет открытой записи</h2>);
             break;
@@ -68,25 +72,25 @@ let NoteTab = observer(() => {
             markup.push(
                 <>
                     <ControlsContainer>
-                        <ControlButton onClick={window.stores.noteTabStore.delOpenedNote}>
+                        <ControlButton onClick={noteTabStore.delOpenedNote}>
                             <ButtonContentContainer>
                                 <IconTrash />
                                 Удалить запись
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.closeOpenedNote}>
+                        <ControlButton onClick={noteTabStore.closeOpenedNote}>
                             <ButtonContentContainer>
                                 <IconLogout />
                                 Закрыть запись
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.copyOpenedNoteId}>
+                        <ControlButton onClick={noteTabStore.copyOpenedNoteId}>
                             <ButtonContentContainer>
                                 <IconCopy />
                                 Копировать идентификатор
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.startOpenedNoteWriting}>
+                        <ControlButton onClick={noteTabStore.startOpenedNoteWriting}>
                             <ButtonContentContainer>
                                 <IconEdit />
                                 Изменить запись
@@ -101,25 +105,25 @@ let NoteTab = observer(() => {
             markup.push(
                 <>
                     <ControlsContainer>
-                        <ControlButton onClick={window.stores.noteTabStore.delOpenedNote}>
+                        <ControlButton onClick={noteTabStore.delOpenedNote}>
                             <ButtonContentContainer>
                                 <IconTrash />
                                 Удалить запись
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.closeOpenedNote}>
+                        <ControlButton onClick={noteTabStore.closeOpenedNote}>
                             <ButtonContentContainer>
                                 <IconLogout />
                                 Закрыть запись
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.copyOpenedNoteId}>
+                        <ControlButton onClick={noteTabStore.copyOpenedNoteId}>
                             <ButtonContentContainer>
                                 <IconCopy />
                                 Копировать идентификатор
                             </ButtonContentContainer>
                         </ControlButton>
-                        <ControlButton onClick={window.stores.noteTabStore.stopOpenedNoteWriting}>
+                        <ControlButton onClick={noteTabStore.stopOpenedNoteWriting}>
                             <ButtonContentContainer>
                                 <IconEditOff />
                                 Прекратить изменение записи

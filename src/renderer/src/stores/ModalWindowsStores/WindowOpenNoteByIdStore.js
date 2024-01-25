@@ -1,4 +1,6 @@
 import { makeAutoObservable } from "mobx";
+import { modalWindowsStore } from "../ModalWindowsStore";
+import { noteTabStore } from "../NoteTabStore";
 
 class WindowOpenNoteByIdStore {
     constructor() {
@@ -12,8 +14,8 @@ class WindowOpenNoteByIdStore {
     };
 
     submit = async () => {
-        await window.stores.modalWindowStore.close();
-        await window.stores.noteTabStore.openNote(this.noteId);
+        modalWindowsStore.close();
+        noteTabStore.openNote(this.noteId);
     };
     
     reset = async () => {
@@ -22,4 +24,4 @@ class WindowOpenNoteByIdStore {
     
 }
 
-export default WindowOpenNoteByIdStore;
+export const windowOpenNoteByIdStore = new WindowOpenNoteByIdStore();

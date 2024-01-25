@@ -9,4 +9,4 @@ class HistoryStore {
     
 }
 
-export default HistoryStore;
+export const historyStore = new HistoryStore();

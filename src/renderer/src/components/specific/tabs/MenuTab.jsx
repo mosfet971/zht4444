@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import styled from "styled-components";
 import MenuCard from "../../universal/MenuCard.jsx";
+import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
 
 import { 
     IconFilePlus, 
@@ -15,6 +16,7 @@ import {
     IconZoomScan,
     IconFileSymlink
 } from '@tabler/icons-react';
+import { noteTabStore } from "../../../stores/NoteTabStore.js";
 
 let MenuCardsContainer = styled.div`
     display: flex;
@@ -25,12 +27,12 @@ let MenuCardsContainer = styled.div`
 let MenuTab = observer(() => {
     return (
         <MenuCardsContainer>
-            <MenuCard handler={window.stores.noteTabStore.createNewNoteAndOpenForWriting}>
+            <MenuCard handler={noteTabStore.createNewNoteAndOpenForWriting}>
                 <IconFilePlus/><br/>
                 Создать новую запись
             </MenuCard>
-            <MenuCard handler={async ()=>{
-                await window.stores.modalWindowStore.open("OpenNoteById");
+            <MenuCard handler={()=>{
+                modalWindowsStore.open("OpenNoteById");
             }}>
                 <IconFileSymlink/><br/>
                 Открыть запись по id
