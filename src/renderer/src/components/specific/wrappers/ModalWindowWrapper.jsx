@@ -1,9 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 
-import WindowLoginError from "./WindowLoginError.jsx";
-import WindowOpenNoteById from "./WindowOpenNoteById.jsx";
-import WindowNoteNotExistError from "./WindowNoteNotExistError.jsx";
+import WindowLoginError from "../modalWindows/WindowLoginError.jsx";
+import WindowOpenNoteById from "../modalWindows/WindowOpenNoteById.jsx";
+import WindowNoteNotExistError from "../modalWindows/WindowNoteNotExistError.jsx";
 import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
 
 let ModalWindowWrapper = observer(() => {
@@ -13,10 +13,10 @@ let ModalWindowWrapper = observer(() => {
         case "WindowLoginError":
             jsx.push(<WindowLoginError/>);
             break;
-        case "OpenNoteById":
+        case "WindowOpenNoteById":
             jsx.push(<WindowOpenNoteById/>);
             break;
-        case "ErrorNoteNotExist":
+        case "WindowNoteNotExistError":
             jsx.push(<WindowNoteNotExistError/>);
             break;
         default:

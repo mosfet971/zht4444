@@ -16,12 +16,12 @@ class NoteTabStore {
             this.mode = "read";
             await tabStore.openTab("readAndWrite");
         } else {
-            await modalWindowsStore.open("ErrorNoteNotExist");
+            await modalWindowsStore.open("WindowNoteNotExistError");
         }
     };
 
     delOpenedNote = async () => {
-        await ipcRenderer.invoke("delNote", this.openedNoteId);
+        await ipcRenderer.invoke("delEntity", this.openedNoteId);
         this.openedNoteId = "-";
         this.mode = "no";
     };

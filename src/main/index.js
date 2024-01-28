@@ -69,8 +69,19 @@ function createWindow() {
     }
   });
 
-  ipcMain.handle("delNote", async(e, id)=> {
+  ipcMain.handle("delEntity", async(e, id)=> {
     await db.rmEntity(dbPath, mk, noteEntityType, id);
+  });
+
+  ipcMain.handle("isNoteExist", async(e, noteId)=> {
+    let noteIds = await db.getEntitiesIdsByType(dbPath, mk, noteEntityType);
+
+    let isExist = false;
+    for (let i of noteIds) {
+      if (noteId == i) isExist = true;
+    }
+
+    return isExist;
   });
 
   ipcMain.handle("createNewNoteAndGetId", async(e)=> {
@@ -83,17 +94,6 @@ function createWindow() {
 
     await db.setEntity(dbPath, mk, noteEntityType, id, note);
     return id;
-  });
-
-  ipcMain.handle("isNoteExist", async(e, noteId)=> {
-    let noteIds = await db.getEntitiesIdsByType(dbPath, mk, noteEntityType);
-
-    let isExist = false;
-    for (let i of noteIds) {
-      if (noteId == i) isExist = true;
-    }
-
-    return isExist;
   });
 
 };

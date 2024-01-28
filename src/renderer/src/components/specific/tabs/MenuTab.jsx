@@ -32,7 +32,7 @@ let MenuTab = observer(() => {
                 Создать новую запись
             </MenuCard>
             <MenuCard handler={()=>{
-                modalWindowsStore.open("OpenNoteById");
+                modalWindowsStore.open("WindowOpenNoteById");
             }}>
                 <IconFileSymlink/><br/>
                 Открыть запись по id

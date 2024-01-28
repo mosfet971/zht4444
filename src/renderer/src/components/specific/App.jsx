@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import MainPage from "./pages/MainPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ModalWindowWrapper from "./modalWindows/ModalWindowWrapper.jsx";
+import ModalWindowWrapper from "./wrappers/ModalWindowWrapper.jsx";
 
 import styled from "styled-components";
 
