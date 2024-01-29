@@ -87,8 +87,15 @@ function createWindow() {
   ipcMain.handle("createNewNoteAndGetId", async(e)=> {
     let id = await db.newId();
 
+    let dateString = (new Date()).toString();
+
     let note = {
-      blockList: ["text"],
+      metaInfo: {
+        name: "Новая Запись",
+        description: "Текст описания записи",
+        creationDate: dateString,
+        editionDate: dateString
+      },
       text: ""
     };
 

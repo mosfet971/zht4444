@@ -10,7 +10,8 @@ import {
     IconLogout,
     IconCopy,
     IconEdit,
-    IconEditOff
+    IconEditOff,
+    IconDeviceFloppy
 } from '@tabler/icons-react';
 
 import { noteTabStore } from "../../../stores/NoteTabStore.js";
@@ -127,6 +128,12 @@ let NoteTab = observer(() => {
                             <ButtonContentContainer>
                                 <IconEditOff />
                                 Прекратить изменение записи
+                            </ButtonContentContainer>
+                        </ControlButton>
+                        <ControlButton onClick={noteTabStore.save}>
+                            <ButtonContentContainer>
+                                <IconDeviceFloppy />
+                                Сохранить
                             </ButtonContentContainer>
                         </ControlButton>
                     </ControlsContainer>

@@ -49,6 +49,10 @@ class NoteTabStore {
         await navigator.clipboard.writeText(this.openedNoteId);
     };
 
+    save = async () => {
+        await this.stopOpenedNoteWriting();
+    };
+
 }
 
 export const noteTabStore = new NoteTabStore();

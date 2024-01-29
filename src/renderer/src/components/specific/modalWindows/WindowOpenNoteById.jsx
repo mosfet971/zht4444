@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import ModalWindow from "../../universal/ModalWindow.jsx"
 import styled from "styled-components";
-import { windowOpenNoteByIdStore } from "../../../stores/ModalWindowsStores/WindowOpenNoteByIdStore.js";
+import { windowOpenNoteByIdStore } from "../../../stores/modalWindowsStores/WindowOpenNoteByIdStore.js";
 import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
 
 let Form = styled.div`
