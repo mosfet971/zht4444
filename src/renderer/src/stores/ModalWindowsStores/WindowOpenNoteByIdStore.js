@@ -10,6 +10,7 @@ class WindowOpenNoteByIdStore {
     noteId = "";
 
     idInputOninputHandler = async (e) => {
+        e.preventDefault();
         this.noteId = e.target.value;
     };
 

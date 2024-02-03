@@ -5,45 +5,31 @@ import styled from "styled-components";
 
 import MenuTab from "../tabs/MenuTab.jsx";
 import NoteTab from "../tabs/NoteTab.jsx";
-import { tabStore } from "../../../stores/TabStore.js";
+import { tabManagerStore } from "../../../stores/TabManagerStore.js";
 
-let Tabpanel = styled.article`
-  width: 100vw;
-  height: calc(100vh - (1.5em + 2em));
-  overflow-y: auto !important;
-  padding: 0;
-`;
-
-let TabButton = styled.button`
-  user-select: none;
-`;
-
-let TabMenu = styled.menu`
-  height: 2em;
-`;
+import TabSection from "../../universal/TabSection.jsx";
+import TabMenu from "../../universal/TabMenu.jsx";
+import TabButton from "../../universal/TabButton.jsx";
+import TabPanel from "../../universal/TabPanel.jsx";
 
 let MainPage = observer(() => {
-  useEffect(() => {
-    tabStore.init();
-  }, []);
-
   return (<>
-    <section class="tabs" style={{marginTop: "1.5em", zIndex: 10}}>
-      <TabMenu role="tablist" aria-label="tabsMenu">
-        <TabButton role="tab" aria-controls="menu" aria-selected="true">Меню</TabButton>
-        <TabButton role="tab" aria-controls="favs">Избранное</TabButton>
-        <TabButton role="tab" aria-controls="graph">Граф</TabButton>
-        <TabButton role="tab" aria-controls="recent">Недавнее</TabButton>
-        <TabButton role="tab" aria-controls="search">Поиск</TabButton>
-        <TabButton role="tab" aria-controls="readAndWrite">Просмотр и изменение</TabButton>
+    <TabSection id="mainTabs">
+      <TabMenu>
+        <TabButton target="menu" isDefaultSelected={true}>Меню</TabButton>
+        <TabButton target="favs" isDefaultSelected={false}>Избранное</TabButton>
+        <TabButton target="graph" isDefaultSelected={false}>Граф</TabButton>
+        <TabButton target="recent" isDefaultSelected={false}>Недавнее</TabButton>
+        <TabButton target="search" isDefaultSelected={false}>Поиск</TabButton>
+        <TabButton target="readAndWrite" isDefaultSelected={false}>Просмотр и изменение</TabButton>
       </TabMenu>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="menu"><MenuTab/></Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="favs" hidden>Tab B is active</Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="graph" hidden>Tab C1 is active</Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="recent" hidden>Tab C2 is active</Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="search" hidden>Tab C3 is active</Tabpanel>
-      <Tabpanel role="tabpanel" className="has-scrollbar" id="readAndWrite" hidden><NoteTab/></Tabpanel>
-    </section>
+      <TabPanel isDefaultHidden={false} id="menu"><MenuTab/></TabPanel>
+      <TabPanel isDefaultHidden={true} id="favs">Tab B1 is active</TabPanel>
+      <TabPanel isDefaultHidden={true} id="graph">Tab B2 is active</TabPanel>
+      <TabPanel isDefaultHidden={true} id="recent">Tab B3 is active</TabPanel>
+      <TabPanel isDefaultHidden={true} id="search">Tab B4 is active</TabPanel>
+      <TabPanel isDefaultHidden={true} id="readAndWrite"><NoteTab/></TabPanel>
+    </TabSection>
   </>);
 });
 

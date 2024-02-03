@@ -37,6 +37,7 @@ let ControlsContainer = styled.div`
 let ButtonContentContainer = styled.div`
     display: flex;
     justify-content: center;
+    text-align: center;
     gap: 0.25em;
     align-items: center;
 
@@ -133,7 +134,7 @@ let NoteTab = observer(() => {
                         <ControlButton onClick={noteTabStore.save}>
                             <ButtonContentContainer>
                                 <IconDeviceFloppy />
-                                Сохранить
+                                Сохранить запись
                             </ButtonContentContainer>
                         </ControlButton>
                     </ControlsContainer>

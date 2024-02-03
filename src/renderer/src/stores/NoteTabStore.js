@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { modalWindowsStore } from "./ModalWindowsStore";
-import { tabStore } from "./TabStore";
+import { tabManagerStore } from "./TabManagerStore";
 
 class NoteTabStore {
     constructor() {
@@ -14,7 +14,7 @@ class NoteTabStore {
         if (await ipcRenderer.invoke("isNoteExist", noteId)) {
             this.openedNoteId = noteId;
             this.mode = "read";
-            await tabStore.openTab("readAndWrite");
+            await tabManagerStore.openTab("mainTabs", "readAndWrite");
         } else {
             await modalWindowsStore.open("WindowNoteNotExistError");
         }
@@ -27,7 +27,7 @@ class NoteTabStore {
     };
 
     createNewNoteAndOpenForWriting = async () => {
-        await tabStore.openTab("readAndWrite");
+        await tabManagerStore.openTab("mainTabs", "readAndWrite");
         this.openedNoteId = await ipcRenderer.invoke("createNewNoteAndGetId");
         this.mode = "write";
     };
