@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { modalWindowsStore } from "../ModalWindowsStore";
+import { modalWindowsManagerStore } from "../ModalWindowsManagerStore";
 import { noteTabStore } from "../NoteTabStore";
 
 class WindowOpenNoteByIdStore {
@@ -15,7 +15,7 @@ class WindowOpenNoteByIdStore {
     };
 
     submit = async () => {
-        modalWindowsStore.close();
+        modalWindowsManagerStore.close();
         noteTabStore.openNote(this.noteId);
     };
     

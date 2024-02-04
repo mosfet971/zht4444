@@ -2,8 +2,9 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import styled from "styled-components";
-import NoteReadBuilder from "../noteBuilders/NoteReadBuilder.jsx";
-import NoteWriteBuilder from "../noteBuilders/NoteWriteBuilder.jsx";
+
+import NoteEditMode from "../noteModes/NoteEditMode.jsx";
+import NoteViewMode from "../noteModes/NoteViewMode.jsx";
 
 import {
     IconTrash,
@@ -70,7 +71,7 @@ let NoteTab = observer(() => {
         case "no":
             markup.push(<h2 style={{ margin: "1em" }}>Нет открытой записи</h2>);
             break;
-        case "read":
+        case "view":
             markup.push(
                 <>
                     <ControlsContainer>
@@ -99,11 +100,11 @@ let NoteTab = observer(() => {
                             </ButtonContentContainer>
                         </ControlButton>
                     </ControlsContainer>
-                    <NoteReadBuilder />
+                    <NoteViewMode />
                 </>
             );
             break;
-        case "write":
+        case "edit":
             markup.push(
                 <>
                     <ControlsContainer>
@@ -138,7 +139,7 @@ let NoteTab = observer(() => {
                             </ButtonContentContainer>
                         </ControlButton>
                     </ControlsContainer>
-                    <NoteWriteBuilder />
+                    <NoteEditMode />
                 </>
             );
             break;

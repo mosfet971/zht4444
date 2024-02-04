@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import ModalWindow from "../../universal/ModalWindow.jsx"
 import styled from "styled-components";
 import { windowOpenNoteByIdStore } from "../../../stores/modalWindowsStores/WindowOpenNoteByIdStore.js";
-import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
+import { modalWindowsManagerStore } from "../../../stores/ModalWindowsManagerStore.js";
 
 let Form = styled.div`
   position: relative;
@@ -30,7 +30,7 @@ let WindowOpenNoteById = observer(() => {
   }, []);
   
   return (
-    <ModalWindow title="Открытие записи" onClose={modalWindowsStore.close}>
+    <ModalWindow title="Открытие записи" onClose={modalWindowsManagerStore.close}>
       <p style={{ width: "20em", fontSize: "large" }}>Введите идентификатор записи:</p>
       <Form>
         <input 

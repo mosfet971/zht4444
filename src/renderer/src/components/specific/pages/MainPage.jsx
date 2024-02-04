@@ -3,9 +3,8 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import styled from "styled-components";
 
-import MenuTab from "../tabs/MenuTab.jsx";
-import NoteTab from "../tabs/NoteTab.jsx";
-import { tabManagerStore } from "../../../stores/TabManagerStore.js";
+import MenuTab from "../appTabs/MenuTab.jsx";
+import NoteTab from "../appTabs/NoteTab.jsx";
 
 import TabSection from "../../universal/TabSection.jsx";
 import TabMenu from "../../universal/TabMenu.jsx";

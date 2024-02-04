@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import styled from "styled-components";
 import MenuCard from "../../universal/MenuCard.jsx";
-import { modalWindowsStore } from "../../../stores/ModalWindowsStore.js";
+import { modalWindowsManagerStore } from "../../../stores/ModalWindowsManagerStore.js";
 
 import { 
     IconFilePlus, 
@@ -32,7 +32,7 @@ let MenuTab = observer(() => {
                 Создать новую запись
             </MenuCard>
             <MenuCard handler={()=>{
-                modalWindowsStore.open("WindowOpenNoteById");
+                modalWindowsManagerStore.open("WindowOpenNoteById");
             }}>
                 <IconFileSymlink/><br/>
                 Открыть запись по id

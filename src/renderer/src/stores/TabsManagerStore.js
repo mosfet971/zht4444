@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class TabManagerStore {
+class TabsManagerStore {
     constructor() {
         makeAutoObservable(this);
     }
@@ -28,4 +28,4 @@ class TabManagerStore {
     }
 }
 
-export const tabManagerStore = new TabManagerStore();
+export const tabsManagerStore = new TabsManagerStore();

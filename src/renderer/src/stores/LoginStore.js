@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { modalWindowsStore } from "./ModalWindowsStore";
+import { modalWindowsManagerStore } from "./ModalWindowsManagerStore";
 
 class LoginStore {
     constructor() {
@@ -13,16 +13,16 @@ class LoginStore {
         let isOk = await ipcRenderer.invoke("login", this.password);
         if(isOk) {
             this.isLogined = true;
-            modalWindowsStore.close();
+            modalWindowsManagerStore.close();
         } else {
             this.isLogined = false;
-            modalWindowsStore.open("WindowLoginError");
+            modalWindowsManagerStore.open("WindowLoginError");
         }
     };
 
     updatePassword = (password) => {
         this.password = password;
-        modalWindowsStore.close();
+        modalWindowsManagerStore.close();
     };
 }
 

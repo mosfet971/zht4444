@@ -1,22 +1,22 @@
 import { makeAutoObservable } from "mobx";
-import { modalWindowsStore } from "./ModalWindowsStore";
-import { tabManagerStore } from "./TabManagerStore";
+import { modalWindowsManagerStore } from "./ModalWindowsManagerStore";
+import { tabsManagerStore } from "./TabsManagerStore";
 
 class NoteTabStore {
     constructor() {
         makeAutoObservable(this);
     }
 
-    mode = "no"; // ["no", "read", "write"]
+    mode = "no"; // ["no", "view", "edit"]
     openedNoteId = "-";
 
     openNote = async (noteId) => {
         if (await ipcRenderer.invoke("isNoteExist", noteId)) {
             this.openedNoteId = noteId;
-            this.mode = "read";
-            await tabManagerStore.openTab("mainTabs", "readAndWrite");
+            this.mode = "view";
+            await tabsManagerStore.openTab("mainTabs", "readAndWrite");
         } else {
-            await modalWindowsStore.open("WindowNoteNotExistError");
+            await modalWindowsManagerStore.open("WindowNoteNotExistError");
         }
     };
 
@@ -27,9 +27,9 @@ class NoteTabStore {
     };
 
     createNewNoteAndOpenForWriting = async () => {
-        await tabManagerStore.openTab("mainTabs", "readAndWrite");
+        await tabsManagerStore.openTab("mainTabs", "readAndWrite");
         this.openedNoteId = await ipcRenderer.invoke("createNewNoteAndGetId");
-        this.mode = "write";
+        this.mode = "edit";
     };
 
     closeOpenedNote = async () => {
@@ -38,11 +38,11 @@ class NoteTabStore {
     };
 
     startOpenedNoteWriting = async () => {
-        this.mode = "write";
+        this.mode = "edit";
     };
 
     stopOpenedNoteWriting = async () => {
-        this.mode = "read";
+        this.mode = "view";
     };
 
     copyOpenedNoteId = async () => {

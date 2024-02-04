@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { noteTabStore } from "../../../stores/NoteTabStore";
+import { noteTabStore } from "../../../stores/NoteTabStore.js";
 
 import TabSection from "../../universal/TabSection.jsx";
 import TabMenu from "../../universal/TabMenu.jsx";
@@ -10,7 +10,7 @@ import TabButton from "../../universal/TabButton.jsx";
 import TabPanel from "../../universal/TabPanel.jsx";
 
 
-let NoteWriteBuilder = observer(() => {
+let NoteEditMode = observer(() => {
     return (<>
         <TabSection id="noteWriteTabs">
             <TabMenu>
@@ -23,4 +23,4 @@ let NoteWriteBuilder = observer(() => {
     </>);
 });
 
-export default NoteWriteBuilder;
+export default NoteEditMode;
